@@ -1,17 +1,25 @@
 import React from 'react';
 
+// =================================================================================================
+// Types
+// =================================================================================================
+
 type Props = {
 	indexValue: number;
 	onClick: () => void;
-	gameState: { [k: number]: string };
-	currentPlayer: string;
+	gameState: string[];
+	isGameOver: boolean;
 };
 
-const GridTile = ({ indexValue, onClick, gameState, currentPlayer }: Props) => {
+// =================================================================================================
+// Component
+// =================================================================================================
+
+const GridTile = ({ indexValue, onClick, gameState, isGameOver }: Props) => {
 	return (
 		<button
 			onClick={onClick}
-			disabled={gameState[indexValue] !== ''}
+			disabled={gameState[indexValue] !== '' || isGameOver}
 			className='p-10 w-full border border-red-600 text-center'
 		>
 			<p className={`${gameState[indexValue] === '' && 'invisible'}`}>
