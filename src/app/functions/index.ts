@@ -1,20 +1,12 @@
 export function getInitialState() {
-	const indexArray = Array.from(Array(9).keys());
-	const initialState: { [k: number]: string } = Object.fromEntries(
-		indexArray.map((v, i) => {
-			return [v, ''];
-		})
-	);
+	const initialState = Array(9).join(',').split(',');
 	return initialState;
 }
 
-export function isGameCompleted(gameState: { [k: number]: string }) {
-	return Object.values(gameState).every((v) => v !== '');
+export function isGameCompleted(gameState: string[]) {
+	return gameState.every((v) => v !== '');
 }
 
-export function isGameWon(
-	gameState: { [k: number]: string },
-	lastMoveBy: string
-) {
-	console.log(lastMoveBy);
+export function isGameWon(gameState: string[], lastMoveBy: string) {
+	return false;
 }

@@ -9,16 +9,16 @@ export default function Home() {
 	const [currentPlayer, setCurrentPlayer] = useState('X');
 
 	const handleClick = (index: number) => {
-		const newGameState = {
-			...gameState,
-			[index]: currentPlayer,
-		};
+		let newGameState = gameState;
+		gameState[index] = currentPlayer;
 
-		isGameWon(gameState, currentPlayer);
+		if (isGameWon(gameState, currentPlayer)) {
+			alert('Game won');
+		}
+
 		if (isGameCompleted(newGameState)) {
 			alert('Game Over');
 		}
-
 		setGameState(newGameState);
 		setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
 	};
