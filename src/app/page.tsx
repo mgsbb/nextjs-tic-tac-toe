@@ -10,10 +10,13 @@ export default function Home() {
 
 	const handleClick = (index: number) => {
 		let newGameState = gameState;
-		gameState[index] = currentPlayer;
+		newGameState[index] = currentPlayer;
 
-		if (isGameWon(gameState, currentPlayer)) {
-			alert('Game won');
+		if (isGameWon(newGameState, currentPlayer)) {
+			alert(`Game won by ${currentPlayer}`);
+			setGameState(getInitialState());
+			setCurrentPlayer('X');
+			return;
 		}
 
 		if (isGameCompleted(newGameState)) {
