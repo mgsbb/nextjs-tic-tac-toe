@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
 // =================================================================================================
 // Types
 // =================================================================================================
 
 type Props = {
-	indexValue: number;
-	onClick: () => void;
-	gameState: string[];
-	isGameOver: boolean;
+  indexValue: number;
+  onClick: () => void;
+  gameState: string[];
+  isGameOver: boolean;
 };
 
 // =================================================================================================
@@ -16,19 +16,19 @@ type Props = {
 // =================================================================================================
 
 const GridTile = ({ indexValue, onClick, gameState, isGameOver }: Props) => {
-	return (
-		<button
-			onClick={onClick}
-			disabled={gameState[indexValue] !== '' || isGameOver}
-			className='p-10 w-full border border-red-600 text-center'
-		>
-			<p className={`${gameState[indexValue] === '' && 'invisible'}`}>
-				{gameState[indexValue] !== ''
-					? gameState[indexValue]
-					: 'a random value'}
-			</p>
-		</button>
-	);
+  return (
+    <button
+      onClick={onClick}
+      disabled={gameState[indexValue] !== "" || isGameOver}
+      className="w-full border border-red-600 p-10 text-center"
+    >
+      <p className={`${gameState[indexValue] === "" && "invisible"}`}>
+        {gameState[indexValue] !== ""
+          ? gameState[indexValue]
+          : "a random value"}
+      </p>
+    </button>
+  );
 };
 
 export default GridTile;
