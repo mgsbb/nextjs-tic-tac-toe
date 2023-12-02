@@ -44,9 +44,15 @@ export default function Home() {
   // =================================================================================================
 
   return (
-    <main className="mx-auto w-full p-24">
-      <h1></h1>
-      <div className="mx-auto grid w-1/2 grid-cols-3 gap-2">
+    <main className="mx-auto mt-10 flex w-full flex-col items-center gap-10 p-4">
+      <h1
+        className="w-max bg-gradient-to-r from-pink-600 
+      via-purple-600 to-fuchsia-600 bg-clip-text text-3xl font-extrabold text-transparent md:text-5xl lg:text-6xl"
+      >
+        Tic-Tac-Toe
+      </h1>
+
+      <div className="grid grid-cols-3 gap-2">
         {Array.from(Array(9).keys()).map((index) => {
           return (
             <GridTile
@@ -60,9 +66,15 @@ export default function Home() {
         })}
       </div>
 
-      <button onClick={handleNewGame}>New game</button>
-
-      <p>Winner: {winner && winner}</p>
+      <button
+        onClick={handleNewGame}
+        className="rounded-md bg-violet-700 px-4 py-2 hover:bg-purple-600"
+      >
+        New game
+      </button>
+      <p className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
+        Winner: {winner && winner}
+      </p>
     </main>
   );
 }
