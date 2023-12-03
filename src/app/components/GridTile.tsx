@@ -9,15 +9,29 @@ type Props = {
   onClick: () => void;
   gameState: string[];
   isGameOver: boolean;
+  isCPU: boolean;
+  currentPlayer: string;
 };
 
 // =================================================================================================
 // Component
 // =================================================================================================
 
-const GridTile = ({ indexValue, onClick, gameState, isGameOver }: Props) => {
+const GridTile = ({
+  indexValue,
+  onClick,
+  gameState,
+  isGameOver,
+  isCPU,
+  currentPlayer,
+}: Props) => {
   function isTileDisabled() {
-    if (gameState[indexValue] !== "" || isGameOver) return true;
+    if (
+      gameState[indexValue] !== "" ||
+      isGameOver ||
+      (isCPU && currentPlayer === "O")
+    )
+      return true;
   }
 
   return (

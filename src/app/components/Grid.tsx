@@ -17,7 +17,7 @@ export default function Grid({ isCPU }: { isCPU: boolean }) {
 
   useEffect(() => {
     if (isCPU && currentPlayer === "O") {
-      handleCPUClick();
+      setTimeout(() => handleCPUClick(), 300);
     }
   }, [currentPlayer]);
 
@@ -61,6 +61,19 @@ export default function Grid({ isCPU }: { isCPU: boolean }) {
     handleTileClick(randomValue);
   };
 
+  const displayText = () => {
+    let player = "";
+    if (isCPU) {
+      player = currentPlayer === "X" ? "User" : "CPU";
+    } else player = currentPlayer;
+
+    return isGameOver
+      ? winner === ""
+        ? "Game over"
+        : "Winner: " + player
+      : `${player}s turn`;
+  };
+
   // =================================================================================================
   // Render
   // =================================================================================================
@@ -78,6 +91,8 @@ export default function Grid({ isCPU }: { isCPU: boolean }) {
               }}
               gameState={gameState}
               isGameOver={isGameOver}
+              isCPU={isCPU}
+              currentPlayer={currentPlayer}
             />
           );
         })}
@@ -92,11 +107,7 @@ export default function Grid({ isCPU }: { isCPU: boolean }) {
       </button>
 
       <p className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-2xl font-bold text-transparent md:text-3xl">
-        {isGameOver
-          ? winner === ""
-            ? "Game over"
-            : "Winner: " + winner
-          : `${currentPlayer}'s turn`}
+        {displayText()}
       </p>
 
       <Link href="/">
